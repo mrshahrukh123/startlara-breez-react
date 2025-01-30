@@ -26,12 +26,6 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-
-    Route::middleware(['can:list-account-type'])->group(function () {
-        Route::get('/account-types/list', [AccountTypeController::class, 'list'])->name('account-types.list');
-        Route::resource('/account-types', AccountTypeController::class);
-    });
-
     Route::middleware(['can:list-role'])->group(function () {
         Route::get('/role-permissions/list', [RolePermissionController::class, 'list'])->name('role-permissions.list');
         Route::resource('/role-permissions', RolePermissionController::class);
